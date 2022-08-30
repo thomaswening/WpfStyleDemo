@@ -1,5 +1,6 @@
 ﻿
-<!--link to tutorial: https://wpf-tutorial.com/styles/introduction/ -->     
+<!--link to tutorial: https://wpf-tutorial.com/styles/introduction/ 
+    external style: https://social.msdn.microsoft.com/Forums/vstudio/en-US/e37b528e-f797-4b91-84fe-03ddd7fb57c1/custom-style-in-an-external-file?forum=wpf -->     
     
 <Window x:Class="WpfStyleDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
