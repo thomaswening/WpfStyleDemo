@@ -16,6 +16,16 @@
             <Setter Property="Background" Value="Red" />
             <Setter Property="FontStyle" Value="Italic" />
         </Style>
+        
+        <!--or you can also put the style in an external .xaml file
+        and then add it to a ResourceDictionary
+        ATTENTION: you must provide the dictionary with a key - otherwise it won't compile
+        AND: you must add the same block below in App.xaml inside the App.Resources tag-->
+        <ResourceDictionary x:Key="key">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ExternalStyleDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     
     <Grid>
@@ -61,6 +71,6 @@
         <!--apply an explicit style by referencing in the Style attribute like so 
         Style = "{StaticResource [StyleName]}"-->
         <TextBlock Grid.Row="4" Grid.Column="1" Text="test4" Style="{StaticResource ExplicitStyle}"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Text="test5" Style="{StaticResource ExplicitStyle}"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="test5" Style="{StaticResource ExternalStyle}"/>
     </Grid>
 </Window>
