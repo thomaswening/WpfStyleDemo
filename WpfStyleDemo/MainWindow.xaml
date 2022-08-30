@@ -1,0 +1,66 @@
+﻿
+<!--link to tutorial: https://wpf-tutorial.com/styles/introduction/ -->     
+    
+<Window x:Class="WpfStyleDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStyleDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <!--define explicit styles by using the x:Key attribute-->
+    <Window.Resources>
+        <Style x:Key="ExplicitStyle" TargetType="TextBlock">
+            <Setter Property="Background" Value="Red" />
+            <Setter Property="FontStyle" Value="Italic" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--define a local style inside a {parentElement}.Resources tag
+        this could also be the window tag if you want the style to apply for the entire window
+        or the app tag in the App.xaml file for the entire app-->
+        <Grid.Resources>
+            
+            <!--here define a style tag with a TargetType attribute determining which
+            tags the style should be applied to within the parent element-->
+            <Style TargetType="TextBlock">
+                
+                <!--define self-closing setter tags with the attribute pair Property - Value,
+                determining which of the target type tag's properties should have which values-->
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Foreground" Value="BlueViolet" />
+            </Style>
+        </Grid.Resources>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="test1" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="test2" />
+        
+        <!--of course, inherited styles can be overwritten-->
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="test3" Foreground="Black"/>
+
+        <!--apply an explicit style by referencing in the Style attribute like so 
+        Style = "{StaticResource [StyleName]}"-->
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="test4" Style="{StaticResource ExplicitStyle}"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="test5" Style="{StaticResource ExplicitStyle}"/>
+    </Grid>
+</Window>
